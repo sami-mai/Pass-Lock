@@ -1,8 +1,7 @@
 import unittest # Importing the unittest module
-from passLock import User # Importing the user class
+from user import User # Importing the user class
 import pyperclip
 
-# Class creation
 class TestUser(unittest.TestCase):
 
     '''
@@ -12,14 +11,12 @@ class TestUser(unittest.TestCase):
         unittest.TestCase: TestCase class that helps in creating test cases
     '''
 
-# Setup
     def setUp(self):
         '''
         Set up method to run before each test cases.
         '''
         self.new_user = User("Sami-mai","@sami!mai62") # create contact object
 
-#tearDown method
 
     def tearDown(self):
 
