@@ -1,6 +1,6 @@
 # Password Locker
 An application that allows us to generate and store passwords for various accounts.
-https://sami-mai.github.io/Pass-Lock/
+
 
 This project was generated with Python3.6
 
