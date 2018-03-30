@@ -15,7 +15,7 @@ class TestUser(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_user = User("Sami-mai","@samI!maI62") # create contact object
+        self.new_user = User("Samirah Maison","sami.mai@gmail.com","Sami-mai","@samI!maI62") # create contact object
 
 
     def tearDown(self):
@@ -29,7 +29,8 @@ class TestUser(unittest.TestCase):
         '''
         test_init test case to test if the object is initialized properly
         '''
-
+        self.assertEqual(self.new_user.fullname,"Samirah Maison")
+        self.assertEqual(self.new_user.email,"sami.mai@gmail.com")
         self.assertEqual(self.new_user.username,"Sami-mai")
         self.assertEqual(self.new_user.password,"@samI!maI62")
 
@@ -46,10 +47,10 @@ class TestUser(unittest.TestCase):
         test to check if we can return a Boolean if we cannot find the user.
         '''
         self.new_user.save_user()
-        test_user = User("S-Mai","!Smai@72",)
+        test_user = User("Stephanie Bart","steph.bart@gmail.com","Bart-Menz","!Bmenz@72",)
         test_user.save_user()
 
-        user_exists = User.user_exist("S-Mai")
+        user_exists = User.user_exists("Bart-Menz")
         self.assertTrue(user_exists)
 
 
