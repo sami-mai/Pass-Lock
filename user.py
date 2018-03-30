@@ -5,14 +5,18 @@ class User:
 
     user_list = []
 
-    def __init__(self, username, password):
+    def __init__(self, fullname, email, username, password):
         '''
         __init__ method that helps us define properties for our objects.
 
         Args:
+            fullname: New user's fullname
+            email: New user's email
             username: New user's username.
             password: New user's password.
          '''
+        self.fullname = fullname
+        self.email = email
         self.username = username
         self.password = password
 
@@ -23,7 +27,7 @@ class User:
         User.user_list.append(self)
 
     @classmethod
-    def user_exist(cls,username):
+    def user_exists(cls,username):
         '''
         Method that checks if a user exists in the user list.
         Args:
