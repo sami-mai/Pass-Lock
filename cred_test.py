@@ -34,6 +34,14 @@ class TestCred(unittest.TestCase):
         self.assertEqual(self.new_cred.username,"Sami-maifb")
         self.assertEqual(self.new_cred.password,"@samI!maI4fb")
 
+    def test_save_cred(self):
+        '''
+        test_save_cred test case to test if the cred object is saved into
+         the cred list
+        '''
+        self.new_cred.save_cred()
+        self.assertEqual(len(Cred.cred_list),1)
+
     
 
 
