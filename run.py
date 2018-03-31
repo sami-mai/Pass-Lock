@@ -20,6 +20,12 @@ def check_existing_user(username):
     '''
     return User.user_exists(username)
 
+def find_user(username):
+    '''
+    Function that finds a user by username and returns the user
+    '''
+    return User.find_by_username(username)
+
 def main():
     print("Welcome to PassLocker")
     print("-"*10)
@@ -33,7 +39,7 @@ def main():
 
         if short_code == 'su':
             print("Sign up to create a PassLocker account")
-            print("-"*10)
+            print("-"*20)
 
             print("Fullname.....")
             fullname = input()
@@ -54,26 +60,30 @@ def main():
 
         elif short_code == 'li':
             print("Login to your PassLocker account")
-            print("-"*10)
+            print("-"*20)
 
-            i=0
-            while i<3:
-                i=i+1
+            while True:
+
                 print("Username.....")
-                username = input()
-                if username == check_existing_user(username):
+                search_user = input()
+                if check_existing_user(search_user):
+                    search_user = find_user(search_user)
+                    while True:
 
-                    while i<3:
-                        i=i+1
                         print("Password.....")
                         password = input()
-                        if password == user.password:
+                        if password == search_user.password:
                             print(f"Welcome {username}, you are logged in!")
                             break
-                            break
+
+                                # insert credentials logic here
+                                # while True:
+                                #     break
+                                
                         else:
                             print("Incorrect password")
-
+                            print ('\n')
+                    break
                 else:
                     print(f"{username} does not exist, please sign up.")
         elif short_code == 'ex':
