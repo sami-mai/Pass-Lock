@@ -25,6 +25,15 @@ class TestCred(unittest.TestCase):
 
         Cred.cred_list = []
 
+    def test_init(self):
+        '''
+        test_init test case to test if the object is initialized properly
+        '''
+        self.assertEqual(self.new_cred.accountName,"Facebook")
+        self.assertEqual(self.new_cred.email,"sami.mai@gmail.com")
+        self.assertEqual(self.new_cred.username,"Sami-maifb")
+        self.assertEqual(self.new_cred.password,"@samI!maI4fb")
+
     
 
 
