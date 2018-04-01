@@ -42,7 +42,29 @@ class TestCred(unittest.TestCase):
         self.new_cred.save_cred()
         self.assertEqual(len(Cred.cred_list),1)
 
-    
+    def test_cred_exists(self):
+        '''
+        test to check if we can return a Boolean if we cannot find the user's credentials.
+        '''
+        self.new_cred.save_cred()
+        test_cred = Cred("facebook","steph.bart@gmail.com","Bart-Menz","!Bmenz@fb")
+        test_cred.save_cred()
+
+        cred_exists = Cred.cred_exists("facebook")
+        self.assertTrue(cred_exists)
+
+    def test_find_cred_by_accountName(self):
+        '''
+        test to check if we can find a user's credentials by accountName and display information
+        '''
+
+        self.new_cred.save_cred()
+        test_cred = Cred("facebook","steph.bart@gmail.com","Bart-Menz","!Bmenz@fb")
+        test_cred.save_cred()
+
+        found_cred = Cred.find_by_accountName("facebook")
+
+        self.assertEqual(found_cred.accountName,test_cred.accountName)
 
 
 if __name__ == '__main__':
