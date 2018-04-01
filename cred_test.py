@@ -71,6 +71,17 @@ class TestCred(unittest.TestCase):
         '''
         self.assertEqual(Cred.display_accounts(),Cred.cred_list)
 
+    def test_delete_credentials(self):
+            '''
+            test_delete_credentials to test if we can remove an account from our cred list
+            '''
+            self.new_cred.save_cred()
+            test_cred = Cred("facebook","steph.bart@gmail.com","Bart-Menz","!Bmenz@fb")
+            test_cred.save_cred()
+
+            self.new_cred.delete_cred()
+            self.assertEqual(len(Cred.cred_list),1)    
+
 
 if __name__ == '__main__':
     unittest.main()

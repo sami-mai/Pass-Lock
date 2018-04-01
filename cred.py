@@ -26,6 +26,14 @@ class Cred:
         '''
         Cred.cred_list.append(self)
 
+    def delete_cred(self):
+
+        '''
+        delete_cred method deletes a saved account from the cred_list
+        '''
+
+        Cred.cred_list.remove(self)
+
     @classmethod
     def cred_exists(cls,accountName):
         '''
