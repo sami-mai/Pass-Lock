@@ -1,6 +1,5 @@
-import unittest # Importing the unittest module
-from user import User # Importing the user class
-import pyperclip
+import unittest 
+from user import User
 
 class TestUser(unittest.TestCase):
 
@@ -15,7 +14,7 @@ class TestUser(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_user = User("Samirah Maison","sami.mai@gmail.com","Sami-mai","@samI!maI62") # create contact object
+        self.new_user = User("Samirah Maison","sami.mai@gmail.com","Sami-mai","@samI!maI62")
 
 
     def tearDown(self):
