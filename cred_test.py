@@ -57,7 +57,6 @@ class TestCred(unittest.TestCase):
         '''
         test to check if we can find a user's credentials by accountName and display information
         '''
-
         self.new_cred.save_cred()
         test_cred = Cred("facebook","steph.bart@gmail.com","Bart-Menz","!Bmenz@fb")
         test_cred.save_cred()
@@ -65,6 +64,12 @@ class TestCred(unittest.TestCase):
         found_cred = Cred.find_by_accountName("facebook")
 
         self.assertEqual(found_cred.accountName,test_cred.accountName)
+
+    def test_display_all_credentials(self):
+        '''
+        test to check if we can display all the accounts a user has
+        '''
+        self.assertEqual(Cred.display_accounts(),Cred.cred_list)
 
 
 if __name__ == '__main__':

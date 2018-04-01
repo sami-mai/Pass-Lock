@@ -56,3 +56,10 @@ class Cred:
         for cred in cls.cred_list:
             if cred.accountName == accountName:
                 return cred
+
+    @classmethod
+    def display_accounts(cls):
+        '''
+        method that returns the cred list
+        '''
+        return cls.cred_list
