@@ -1,6 +1,4 @@
-import pyperclip
 import random
-
 
 class Cred:
     """Class that generates new instance of user credentials"""
@@ -79,9 +77,8 @@ class Cred:
         '''
         method that generates a random password based on the username
         '''
-        for cred in cls.cred_list:
-            letters = cred.username[1:3]
-            num1 = random.randint(0,9)
-            num2 = random.randint(9,16)
-            gen_pass = "!"+ "num1" + "letters" + "num2"
-            return gen_pass
+        letters = username[1:4]
+        num1 = str(random.randint(0,9))
+        num2 = str(random.randint(9,16))
+        gen_pass = "!"+ num1 + letters + num2 + "$" + letters.upper()
+        return gen_pass
