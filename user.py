@@ -1,6 +1,5 @@
 class User:
     """Class that generates new instance of users"""
-
     user_list = []
 
     def __init__(self, fullname, email, username, password):
