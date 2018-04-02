@@ -1,6 +1,8 @@
 #!/usr/bin/env python3.6
 from user import User
+from cred import Cred
 
+# Funtions dependent on the User Class
 def create_user(fullname, email, username, password):
     '''
     Function to create a new user
@@ -26,6 +28,48 @@ def find_user(username):
     '''
     return User.find_by_username(username)
 
+# Funtions dependent on the Cred Class
+def create_cred(accountName, email, username, password):
+    '''
+    Function to create new credentials
+    '''
+    new_cred = User(accountName, email, username, password)
+    return new_cred
+
+def save_new_cred(new_cred):
+    '''
+    Function to save credentials
+    '''
+    new_cred.save_cred()
+
+def del_cred(cred):
+    '''
+    Function to delete credentials
+    '''
+    cred.delete_cred()
+
+def check_existing_cred(accountName):
+    '''
+    Function that check if credentials exist with that accountName and return a Boolean
+    '''
+    return Cred.cred_exists(accountName)
+
+def find_cred(accountName):
+    '''
+    Function that finds a user's credentials by accountName and returns the credentials
+    '''
+    return Cred.find_by_accountName(accountName)
+
+def gen_password(username):
+
+    return Cred.gen_password(username)
+
+def display_accounts():
+    '''
+    Function that returns all the saved accounts
+    '''
+    return Cred.display_accounts()
+
 def main():
     print("Welcome to PassLocker")
     print("-"*10)
@@ -33,7 +77,7 @@ def main():
     while True:
         print("Please use the following short codes:")
         print('\n')
-        print ("su - Sign-up, li - Login", "ex - Exit")
+        print ("su - Sign-up, li - Login, ex - Exit")
 
         short_code = input().lower()
 
@@ -55,7 +99,7 @@ def main():
 
             save_new_user(User(fullname, email, username, password))
             print('\n')
-            print(f"Welcome {username}, your account has sucessfully been created")
+            print(f"Welcome {username}, your account has successfully been created")
             print ('\n')
 
         elif short_code == 'li':
@@ -74,12 +118,13 @@ def main():
                         password = input()
                         if password == search_user.password:
                             print(f"Welcome {username}, you are logged in!")
+                            print ('\n')
                             break
 
                                 # insert credentials logic here
                                 # while True:
                                 #     break
-                                
+
                         else:
                             print("Incorrect password")
                             print ('\n')
@@ -90,7 +135,7 @@ def main():
             print("Bye .......")
             break
         else:
-                    print("I really didn't get that. Please use the short codes")
+            print("I really didn't get that. Please use the short codes")
 
 if __name__ == '__main__':
     main()
