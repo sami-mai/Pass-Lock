@@ -1,4 +1,6 @@
 import pyperclip
+import random
+
 
 class Cred:
     """Class that generates new instance of user credentials"""
@@ -27,12 +29,11 @@ class Cred:
         Cred.cred_list.append(self)
 
     def delete_cred(self):
-
         '''
         delete_cred method deletes a saved account from the cred_list
         '''
-
         Cred.cred_list.remove(self)
+
 
     @classmethod
     def cred_exists(cls,accountName):
@@ -71,3 +72,16 @@ class Cred:
         method that returns the cred list
         '''
         return cls.cred_list
+
+
+    @classmethod
+    def gen_password(cls,username):
+        '''
+        method that generates a random password based on the username
+        '''
+        for cred in cls.cred_list:
+            letters = cred.username[1:3]
+            num1 = random.randint(0,9)
+            num2 = random.randint(9,16)
+            gen_pass = "!"+ "num1" + "letters" + "num2"
+            return gen_pass
