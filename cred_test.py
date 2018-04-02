@@ -42,6 +42,17 @@ class TestCred(unittest.TestCase):
         self.new_cred.save_cred()
         self.assertEqual(len(Cred.cred_list),1)
 
+    def test_delete_credentials(self):
+        '''
+        test_delete_credentials to test if we can remove an account from our cred list
+        '''
+        self.new_cred.save_cred()
+        test_cred = Cred("facebook","steph.bart@gmail.com","Bart-Menz","!Bmenz@fb")
+        test_cred.save_cred()
+
+        self.new_cred.delete_cred()
+        self.assertEqual(len(Cred.cred_list),1)
+
     def test_cred_exists(self):
         '''
         test to check if we can return a Boolean if we cannot find the user's credentials.
@@ -71,16 +82,16 @@ class TestCred(unittest.TestCase):
         '''
         self.assertEqual(Cred.display_accounts(),Cred.cred_list)
 
-    def test_delete_credentials(self):
-            '''
-            test_delete_credentials to test if we can remove an account from our cred list
-            '''
-            self.new_cred.save_cred()
-            test_cred = Cred("facebook","steph.bart@gmail.com","Bart-Menz","!Bmenz@fb")
-            test_cred.save_cred()
+    def test_gen_password(self):
+        '''
+        test to check if we can generate a password based on username
+        '''
+        self.new_cred.save_cred()
+        test_cred = Cred("instagram","steph.bart@gmail.com","Bart-Menz","")
+        test_cred.password = Cred.gen_password("Bart-Menz")
+        test_cred.save_cred()
+        self.assertTrue(len(test_cred.password) > 2)
 
-            self.new_cred.delete_cred()
-            self.assertEqual(len(Cred.cred_list),1)    
 
 
 if __name__ == '__main__':
