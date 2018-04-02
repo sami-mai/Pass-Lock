@@ -76,9 +76,8 @@ def main():
 
     while True:
         print("Please use the following short codes:")
-        print('\n')
         print ("su - Sign-up, li - Login, ex - Exit")
-
+        print('\n')
         short_code = input().lower()
 
         if short_code == 'su':
@@ -113,22 +112,106 @@ def main():
                 if check_existing_user(search_user):
                     search_user = find_user(search_user)
                     while True:
-
                         print("Password.....")
                         password = input()
                         if password == search_user.password:
                             print(f"Welcome {username}, you are logged in!")
                             print ('\n')
-                            break
 
-                                # insert credentials logic here
-                                # while True:
-                                #     break
+
+                            while True:
+                                print("Please use the following short codes:")
+                                print("""
+                                add - Add & save existing accounts, gen - Generate password for new account,
+                                disp - display accounts, del - Delete account, lo - Log out
+                                """)
+
+                                short_code = input().lower()
+
+                                if short_code == 'add':
+                                    print ('\n')
+                                    print("Add new account")
+                                    print("-"*10)
+
+                                    print("Account Name.....")
+                                    accountName = input()
+
+                                    print("Email Address.....")
+                                    email = input()
+
+                                    print("Username.....")
+                                    username = input()
+
+                                    print("Password.....")
+                                    password = input()
+
+                                    save_new_cred(Cred(accountName, email, username, password))
+                                    print('\n')
+                                    print(f"Your {accountName} account has successfully been added!")
+                                    print ('\n')
+
+                                elif short_code == 'gen':
+                                    print ('\n')
+                                    print("A random password will be created for this account")
+                                    print("-"*30)
+
+                                    print("Account Name.....")
+                                    accountName = input()
+
+                                    print("Email Address.....")
+                                    email = input()
+
+                                    print("Username.....")
+                                    username = input()
+
+                                    password = gen_password(username)
+                                    print(f"Your password is {password}")
+                                    save_new_cred(Cred(accountName, email, username, password))
+                                    print('\n')
+                                    print(f"Your {accountName} account has successfully been added!")
+                                    print ('\n')
+
+                                elif short_code == 'disp':
+                                    if display_accounts():
+                                        print ('\n')
+                                        print("Here is a list of all your accounts")
+                                        print('\n')
+
+                                        for cred in display_accounts():
+                                            print(f"{cred.accountName}, {cred.email}, {cred.username}, {cred.password}")
+                                            print('\n')
+                                    else:
+                                        print('\n')
+                                        print("You dont seem to have any contacts saved yet")
+                                        print('\n')
+
+                                elif short_code == 'del':
+                                    print ('\n')
+                                    print("What is the name of the account you want to delete?...")
+                                    accountName = input()
+                                    if find_cred(accountName):
+                                        del_cred(Cred((accountName, email, username, password)))
+                                        print('\n')
+                                        print(f"Your {accountName} account has successfully been deleted!")
+                                        print ('\n')
+
+                                elif short_code == 'lo':
+                                    print ('\n')
+                                    print("Sorry to see you go... Come back soon!")
+                                    print ('\n')
+                                    break
+
+                                else:
+                                    print ('\n')
+                                    print("I really didn't get that. Please use the short codes")
+                                    print ('\n')
+                                    break
 
                         else:
                             print("Incorrect password")
                             print ('\n')
-                    break
+                            break
+
                 else:
                     print(f"{username} does not exist, please sign up.")
         elif short_code == 'ex':
