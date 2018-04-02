@@ -13,7 +13,7 @@ This project was generated with Python3.6
 Samirah Maison
 
 ## License
-This project is licensed under the MIT License - see the LICENSE.md file for detail
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ## Acknowledgements
 * Moringa School
