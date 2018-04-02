@@ -32,7 +32,9 @@ def find_cred(accountName):
     return Cred.find_by_accountName(accountName)
 
 def gen_password(username):
-
+    '''
+    Function that generates a random password using the given username
+    '''
     return Cred.gen_password(username)
 
 def display_accounts():
